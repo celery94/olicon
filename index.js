@@ -98,3 +98,12 @@ map.on('pointermove', function (e) {
     var hit = map.hasFeatureAtPixel(pixel);
     map.getTarget().style.cursor = hit ? 'pointer' : '';
 });
+
+map.on('singleclick', function (e) {
+    var iconFeature = new Feature({
+        geometry: new Point(e.coordinate),
+    });
+    iconFeature.setStyle(iconStyle);
+    vectorSource.addFeatures([iconFeature]);
+});
+
